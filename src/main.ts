@@ -34,13 +34,15 @@ const selectHeight = selectCanvas.height / numSelectables;
 
 
 //creating the tilemap nested array
-let tilemap: HTMLImageElement[][] = new Array(numTiles);
+//let tilemap: HTMLImageElement[][] = new Array(numTiles);
+let tilemap: number[][] = new Array(numTiles);
 
 for(let i = 0; i < numTiles; i++) {
     let row = new Array(numTiles);
     for (let j = 0; j < numTiles; j++) {
-        row[j] = new Image();
-        row[j].src = "/tile1.png";
+        //row[j] = new Image();
+        //row[j].src = "/tile1.png";
+        row[j] = 1;
     }
     tilemap[i] = row;
 }
@@ -54,7 +56,7 @@ drawSelectCanvas();
 
 
 //Function that draws a texture to a specific canvas ctx
-function drawTexture(row: number, col: number, ctx: CanvasRenderingContext2D, image: HTMLImageElement, width: number, height: number, cellSize: number) {
+function drawTexture(row: number, col: number, ctx: CanvasRenderingContext2D, image: number, width: number, height: number, cellSize: number) {
     image.onload = () => {
         ctx.drawImage(image, row * cellSize, col * cellSize, width, height)
     };
