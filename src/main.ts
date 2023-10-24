@@ -21,6 +21,12 @@ const imageUrls = [
     "/tile8.png"
 ];
 
+const images: HTMLImageElement[] = [];
+for (const imageUrl in imageUrls) {
+    let img = new Image();
+    img.src = imageUrl;
+    images.push(img);
+}
 
 //defining the size of the main grid
 const numTiles = 32;
@@ -57,9 +63,11 @@ drawSelectCanvas();
 
 //Function that draws a texture to a specific canvas ctx
 function drawTexture(row: number, col: number, ctx: CanvasRenderingContext2D, image: number, width: number, height: number, cellSize: number) {
-    image.onload = () => {
+    /*image.onload = () => {
         ctx.drawImage(image, row * cellSize, col * cellSize, width, height)
-    };
+    };*/
+    let tile = new Image();
+    tile.src = "/tile" + image + ".png";
     ctx.drawImage(image, row * cellSize, col * cellSize, width, height)
 }
 
